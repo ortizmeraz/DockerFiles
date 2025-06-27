@@ -10,4 +10,3 @@ services:
       - SECRET_ENCRYPTION_KEY=cdadb8067f71d941345b2be071c3a81c8439e7c44e575afcd95e99e4641a260d
     ports:
       - '7575:7575'
-			
