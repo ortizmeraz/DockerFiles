@@ -1,0 +1,18 @@
+version: "3.7"
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    container_name: AudioBookShelf
+    environment:
+      - AUDIOBOOKSHELF_UID=1000
+      - AUDIOBOOKSHELF_GID=1000
+      - PUID=1000
+      - PGID=1000
+    ports:
+      - "13378:80"
+    volumes:
+      - "/home/omar/podcasts:/podcasts"
+      - "/home/omar/audiobooks:/audiobooks" 
+      - "/home/omar/DockerConfs/Audiobookshelf/config:/config"
+      - "/home/omar/DockerConfs/Audiobookshelf/metadata:/metadata"
+    restart: unless-stopped

@@ -1,0 +1,15 @@
+---
+version: '3'
+services:
+  file-browser:
+    image: filebrowser/filebrowser
+    container_name: file-browser-Home
+    user: 1000:1003
+    ports:
+      - 8071:80
+    volumes:
+      - ~/:/srv
+      - /home/omar/DockerConfs/FileBrowser/config/filebrowser.db:/database-Home.db
+    restart: always
+    security_opt:
+      - no-new-privileges:true

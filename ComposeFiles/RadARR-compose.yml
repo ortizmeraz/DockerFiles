@@ -1,0 +1,20 @@
+---
+version: "2"
+services:
+  radarr:
+    image: linuxserver/radarr
+    container_name: radarr
+    restart: always
+    environment:
+      - UMASK_SET=022 # control permissions of files and directories created by Radarr
+      - TZ=${TZ} # Specify a timezone to use EG Europe/London, this is required for Radarr
+      - PUID=1000 # for UserID
+      - PGID=1000 # for GroupID
+    volumes:
+      - /home/omar/downloads/movies:/movies # Location of Movie library on disk (See note in Application setup)
+      - /home/omar/downloads:/downloads # Location of download managers output directory (See note in Application setup)
+      - /home/omar/DockerConfs/Radarr/config:/config # Database and Radarr configs
+    network_mode: 'container:Gluetun_VPN_PIA'
+
+    # ports:
+    #   - 7878:7878/tcp # The port for the Radarr webinterface

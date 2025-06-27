@@ -1,0 +1,19 @@
+
+---
+version: "2.1"
+services:
+  firefox:
+    image: lscr.io/linuxserver/firefox:latest
+    container_name: firefox
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - ${Master_Path}/Firefox/config:/config
+      - /mnt/Drive/downloads:/downloads
+    # ports:
+    #   - 3123:3000
+    network_mode: 'container:Gluetun_VPN_PIA'
+    shm_size: "1gb"
+    restart: unless-stopped

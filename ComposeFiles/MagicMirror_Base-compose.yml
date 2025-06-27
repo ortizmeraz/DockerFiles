@@ -1,0 +1,12 @@
+version: '3'
+services:
+  magicmirror:
+    container_name: magicmirror
+    image: bastilimbach/docker-magicmirror
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /home/omar/MagicMirror/config:/opt/magic_mirror/config
+      - /home/omar/MagicMirror/modules:/opt/magic_mirror/modules
+    ports:
+      - 8090:8080

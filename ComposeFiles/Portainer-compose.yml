@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+    portainer:
+        image: 'cr.portainer.io/portainer/portainer-ce:latest'
+        ports:
+            - '8000:8000'
+            - '9443:9443'
+            - '9000:9000'
+        container_name: portainer
+        restart: always
+        volumes:
+            - '/var/run/docker.sock:/var/run/docker.sock'
+            - '/home/omar/DockerConfs/Portainer/portainer_data:/data'
+        # command: --admin-password '$$2y$$05$$7AikKOr6IXzSzzia1iN/UOPXtWl5eyTg3vV5sQnb1ytbbFDvxv9fm'
+
+
+

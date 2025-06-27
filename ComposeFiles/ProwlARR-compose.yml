@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    restart: always
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/omar/DockerConfs/ProwlARR/config:/config
+    # ports:
+    #   - 9696:9696
+    network_mode: 'container:Gluetun_VPN_PIA'

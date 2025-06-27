@@ -1,0 +1,10 @@
+---
+version: '3.3'
+services:
+  brave:
+    # ports:
+    # - '6901:6901'
+    environment:
+      - VNC_PW=password
+    image: 'kasmweb/brave:1.11.0'
+    network_mode: 'container:Gluetun_VPN_PIA_mini'

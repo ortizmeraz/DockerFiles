@@ -1,0 +1,18 @@
+---
+version: "2.1"
+services:
+  couchpotato:
+    image: lscr.io/linuxserver/couchpotato
+    container_name: Couch Potato
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+    volumes:
+      - /home/omar/DockerConfs/CouchPotato/config:/config
+      - /mnt/Drive:/downloads
+      - /mnt/Movies:/movies
+    # ports:
+    #   - 5050:5050
+    restart: unless-stopped
+    network_mode: 'container:Gluetun_VPN_PIA'

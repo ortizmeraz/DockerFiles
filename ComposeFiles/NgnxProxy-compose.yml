@@ -1,0 +1,13 @@
+version: '3'
+services:
+  NginxProxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: Proxy
+    restart: always
+    ports:
+      - 44480:80
+      - 44481:81
+      - 44443:443
+    volumes:
+      - ${Master_Path}/Proxy/data:/data
+      - ${Master_Path}/Proxy/LetEnc:/etc/letsencrypt

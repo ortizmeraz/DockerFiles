@@ -1,0 +1,25 @@
+version: "3"
+services:
+  gluetun_mini:
+    image: qmcgaw/gluetun
+    container_name: Gluetun_VPN_PIA_mini
+    cap_add:
+      - NET_ADMIN
+    restart: always
+    volumes:
+      - ${Master_Path}/gluetun:/gluetun
+    ports:
+      # Brave
+      - 32001:6901
+      - 3123:3000
+
+
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - OPENVPN_USER=${PIA_VPN_USER}
+      - OPENVPN_PASSWORD=${PIA_VPN_PASSWORD}
+      - SERVER_REGIONS=Iceland
+
+
+
+    # sudo docker run -d --rm --cap-add=NET_ADMIN -e VPN_SERVICE_PROVIDER="private internet access" -e OPENVPN_USER=p3998665 -e OPENVPN_PASSWORD=@^G2r^37$6&5 -v ~/Gluten/gluetun:/gluetun -e SERVER_REGIONS=Netherlands image=qmcgaw/gluetun

@@ -1,0 +1,17 @@
+---
+version: "2"
+services:
+  sonarr:
+    image: linuxserver/sonarr
+    container_name: sonarr
+    restart: always
+    environment:
+      - TZ=${TZ} # Specify a timezone to use
+      - PUID=1000 # User ID to run as
+      - PGID=1000 # Group ID to run as
+    volumes:
+      - /home/omar/series:/data # Location of all your media
+      - /home/omar/DockerConfs/Sonarr/config:/config # Contains all relevant configuration files.
+    # ports:
+    #   - 8989:8989/tcp # Web UI
+    network_mode: 'container:Gluetun_VPN_PIA'

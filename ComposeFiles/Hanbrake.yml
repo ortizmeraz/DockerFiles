@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+    handbrake:
+        container_name: handbrake
+        ports:
+            - '5800:5800'
+        volumes:
+            - '${Master_Path}/handbrake/appdata:/config:rw'
+            - '${Master_Path}/handbrake/storage:/storage:ro'
+            - '/mnt/Watch:/watch:rw'
+            - '/mnt/Encoded:/output:rw'
+        image: jlesage/handbrake

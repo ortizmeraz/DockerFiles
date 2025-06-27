@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:latest
+    container_name: uptime-kuma
+    volumes:
+      - /home/omar/DockerConfs/UptimeKuma/data:/app/data
+    ports:
+      - "${portUpTime}:3001"  # <Host Port>:<Container Port>
+      # - "3101:3001"  # <Host Port>:<Container Port>
+    restart: always

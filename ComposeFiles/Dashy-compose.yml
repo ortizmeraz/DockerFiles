@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+    dashy:
+        ports:
+            - '4000:80'
+        volumes:
+            - '${Master_Path}/Dashy/public/my-local-conf.yml:/app/public/conf.yml'
+            - '${Master_Path}/Icons:/app/public/item-icons/icons'
+        container_name: My-Dashyboard
+        restart: always
+        image: 'lissy93/dashy:latest'

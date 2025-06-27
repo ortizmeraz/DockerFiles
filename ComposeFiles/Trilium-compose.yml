@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+  trilium:
+    image: zadam/trilium
+    restart: always
+    ports:
+      - "8801:8080"
+    volumes:
+      - '/home/omar/DockerConfs/Trilium:/home/node/trilium'

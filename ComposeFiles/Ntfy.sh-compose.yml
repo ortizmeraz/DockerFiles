@@ -1,0 +1,16 @@
+version: "2.3"
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy
+    container_name: ntfy
+    command:
+      - serve
+    environment:
+      - TZ=${TZ}    # optional: set desired timezone
+    volumes:
+      - /home/omar/DockerConfs/ntfy/cache:/var/cache/ntfy
+      - /home/omar/DockerConfs/ntfy/etc:/etc/ntfy
+    ports:
+      - 8888:80
+    restart: always

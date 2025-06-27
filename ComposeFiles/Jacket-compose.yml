@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  jackett:
+    image: lscr.io/linuxserver/jackett:latest
+    container_name: jackett
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - AUTO_UPDATE=true #optional
+      # - RUN_OPTS=<run options here> #optional
+    volumes:
+      - ${Master_Path}/Jacket/config:/config
+      - /mnt/Drive:/downloads
+    # ports:
+    #   - 9117:9117
+    restart: unless-stopped
+    network_mode: 'container:Gluetun_VPN_PIA'

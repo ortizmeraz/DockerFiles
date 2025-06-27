@@ -1,0 +1,11 @@
+version: "2"
+services:
+  baikal:
+    image: ckulka/baikal:nginx
+    restart: always
+    ports:
+      - "8880:80"
+    volumes:
+      - /home/omar/DockerConfs/Baikal/config:/var/www/baikal/config
+      - /home/omar/DockerConfs/Baikal/data:/var/www/baikal/Specific
+      - /home/omar/DockerConfs/Baikal/db:/var/www/baikal/Specific/db/

@@ -1,0 +1,33 @@
+---
+version: '3'
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea_main
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+      - DB_TYPE=postgres
+      - DB_HOST=postgres
+      - DB_NAME=gitea
+      - DB_USER=gitea
+      - DB_PASSWD=${GITEA_database_PASSWORD}
+    volumes:
+      - ${Master_Path}/GiTea/giteaData:/data
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    container_name: gitea_postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=${GITEA_database_PASSWORD}
+      - POSTGRES_DB=gitea
+    volumes:
+      - ${Master_Path}/GiTea/giteaPostgresData:/var/lib/postgresql/data
