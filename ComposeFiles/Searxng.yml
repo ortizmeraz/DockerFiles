@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - "8888:8080"
+    environment:
+      - SEARXNG_BASE_URL=https://searx.ss-oom.site    # Required for Cloudflare tunnel
+      - SEARXNG_INSTANCE_NAME=SearXNG                 # Optional, shown in UI
+      - SEARXNG_UI_THEME=dark                         # Optional, 'simple', 'dark', etc.
+      - PYTHONUNBUFFERED=1                            # Optional, better logging
+    volumes:
+      - ${Master_Path}/Searxng/settings.yml:/etc/searxng/settings.yml      # Optional, customize settings
+    restart: always
