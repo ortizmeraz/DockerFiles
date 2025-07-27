@@ -1,4 +1,4 @@
-# Docker Compose file for running paperless from the docker container registry.
+broker:
 # This file contains everything paperless needs to run.
 # Paperless supports amd64, arm and arm64 hardware.
 #
@@ -32,6 +32,7 @@
 services:
   broker:
     image: docker.io/library/redis:8
+    container_name: paperless-broker
     restart: always
     volumes:
       - ${Master_Path}/paperless/redisdata:/data
@@ -46,6 +47,7 @@ services:
       POSTGRES_PASSWORD: paperless
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    container_name: paperless-webserver
     restart: always
     depends_on:
       - db
@@ -68,6 +70,7 @@ services:
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
   gotenberg:
     image: docker.io/gotenberg/gotenberg:8.20
+    container_name: paperless-gotenberg
     restart: always
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
@@ -77,4 +80,5 @@ services:
       - "--chromium-allow-list=file:///tmp/.*"
   tika:
     image: docker.io/apache/tika:latest
+    container_name: paperless-tika
     restart: always
