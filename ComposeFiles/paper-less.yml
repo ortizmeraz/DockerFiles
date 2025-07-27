@@ -37,6 +37,7 @@ services:
       - ${Master_Path}/paperless/redisdata:/data
   db:
     image: docker.io/library/postgres:17
+    container_name: paperless-db
     restart: always
     volumes:
       - ${Master_Path}/paperless/pgdata:/var/lib/postgresql/data
@@ -54,7 +55,7 @@ services:
       - gotenberg
       - tika
     ports:
-      - "8000:8001"
+      - "8001:8000"
     volumes:
       - ${Master_Path}/paperless/data:/usr/src/paperless/data
       - ${Master_Path}/paperless/media:/usr/src/paperless/media
