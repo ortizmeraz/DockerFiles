@@ -1,4 +1,3 @@
-broker:
 # This file contains everything paperless needs to run.
 # Paperless supports amd64, arm and arm64 hardware.
 #
